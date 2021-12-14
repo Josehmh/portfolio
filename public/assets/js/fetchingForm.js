@@ -5,6 +5,14 @@ const message= document.getElementById("message");
 const form= document.getElementById("contact");
 
 form.addEventListener('submit', function(e){
+  
+  if (!new RegExp(/^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/).test(email.value)) {
+    email.value= ""
+    email.setAttribute("placeholder", "invalid email");
+    email.style.borderColor="red"
+    return false
+  }
+  
   try {
       const data= {
         alias: this.alias.value,
@@ -19,15 +27,15 @@ form.addEventListener('submit', function(e){
           }
     
        fetch ('/sendMessage', options)
-       console.log(alias)
-      
       form.reset()
       console.log ("data sent")
-      e.preventDefault()
+      e.preventDefault
     } catch (error) {
       console.log (error)
       console.log ("we failed")
     }
+
+  
 });
 
 

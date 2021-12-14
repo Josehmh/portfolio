@@ -23,14 +23,16 @@ body ("email", "insert a valid email")
 .isEmail(),
 body ("subject", "please write the subject")
 .exists()
-.isLength({min:5}), 
+.isLength({min:3}), 
 body ("message", "write a message")
   .exists()
   .isLength({min:3})] ,
 (req,res) => {
+    console.log(req.body)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      res.status(400).json({ errors: errors.array() });
+      console.log(errors)
     }
 })
 
