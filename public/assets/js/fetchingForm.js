@@ -4,15 +4,16 @@ const subject= document.getElementById("subject");
 const message= document.getElementById("message");
 const form= document.getElementById("contact");
 
-form.addEventListener('submit', function(e){
-  
-  if (!new RegExp(/^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/).test(email.value)) {
-    email.value= ""
-    email.setAttribute("placeholder", "invalid email");
-    email.style.borderColor="red"
-    return false
-  }
-  
+form.addEventListener('submit', async function(e){
+  e.preventDefault()
+
+if (!new RegExp(/^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/).test(email.value)) {
+  email.value= ""
+  email.setAttribute("placeholder", "invalid email");
+  email.style.borderColor="red"
+  return false
+}
+
   try {
       const data= {
         alias: this.alias.value,
@@ -26,10 +27,9 @@ form.addEventListener('submit', function(e){
             headers: { 'Content-Type': 'application/json' }
           }
     
-       fetch ('/sendMessage', options)
+     await  fetch ('/sendMessage', options)
       form.reset()
       console.log ("data sent")
-      e.preventDefault
     } catch (error) {
       console.log (error)
       console.log ("we failed")

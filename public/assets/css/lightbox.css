@@ -6,6 +6,9 @@ html.lb-disable-scrolling {
   width: 100vw;
 }
 
+input:required {
+  box-shadow: 0 0 10px 1px #10b3db
+}
 .lightboxOverlay {
   position: absolute;
   top: 0;
