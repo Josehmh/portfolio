@@ -33,10 +33,10 @@ body ("message", "write a message")
 (req,res) => {
   
   const transporter= nodemailer.createTransport ({
-    service: 'gmail',
+   service: "gmail",
     auth: {
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD
+        user:process.env.MAIL_USERNAME,
+        pass:process.env.MAIL_PASSWORD
     },
     tls: {
       // do not fail on invalid certs
