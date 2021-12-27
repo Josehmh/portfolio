@@ -36,10 +36,11 @@ body ("message", "write a message")
     const errors = validationResult(req);
 
     const transporter= nodemailer.createTransport ({
-      service: "gmail",
+      host: "smtp.mailtrap.io",
+      port: 2525,
        auth: {
-           user:process.env.MAIL_USERNAME,
-           pass:process.env.MAIL_PASSWORD
+           user:"17a0bf690fd01c",
+           pass:"e93bb5bbb8a885"
        },
        tls: {
          // do not fail on invalid certs
